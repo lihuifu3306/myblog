@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="ms-config" />
         <module name="ms-eureka" />
+        <module name="blog-core" />
         <module name="blog-article" />
       </profile>
     </annotationProcessing>
@@ -15,6 +16,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="blog-article" options="-parameters" />
+      <module name="blog-core" options="-parameters" />
       <module name="ms-config" options="-parameters" />
       <module name="ms-eureka" options="-parameters" />
     </option>

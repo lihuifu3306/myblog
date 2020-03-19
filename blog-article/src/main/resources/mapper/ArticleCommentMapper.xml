@@ -6,7 +6,9 @@
     <resultMap id="BaseResultMap" type="com.crazy.article.entity.ArticleCommentEntity">
         <id column="id" property="id" />
         <result column="parent_id" property="parentId" />
-        <result column="article_name" property="articleName" />
+        <result column="article_id" property="articleId"/>
+        <result column="article_name" property="messageName" />
+        <result column="content" property="content"/>
         <result column="comment_name" property="commentName" />
         <result column="comment_like_count" property="commentLikeCount" />
         <result column="create_time" property="createTime" />
@@ -15,7 +17,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, parent_id, article_name, comment_name, comment_like_count, create_time, comment_time
+        id, parent_id, article_id, article_name, message_name, content, comment_like_count, create_time, comment_time
     </sql>
 
 </mapper>

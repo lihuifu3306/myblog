@@ -13,4 +13,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ArticleCommentService extends IService<ArticleCommentEntity> {
 
+    boolean insertArticleComment(ArticleCommentEntity articleCommentEntity);
+
 }

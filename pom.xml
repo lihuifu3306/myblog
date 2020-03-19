@@ -12,6 +12,7 @@
         <module>blog-article</module>
         <module>ms-eureka</module>
         <module>ms-config</module>
+        <module>blog-core</module>
     </modules>
 
     <parent>
