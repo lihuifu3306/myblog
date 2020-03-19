@@ -1,0 +1,4 @@
+com\crazy\core\util\EncryptUtils.class
+com\crazy\core\util\RandomString.class
+com\crazy\core\result\JsonResult.class
+com\crazy\core\util\StringHelper.class

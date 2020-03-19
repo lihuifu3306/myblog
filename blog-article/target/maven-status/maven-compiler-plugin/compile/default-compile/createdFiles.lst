@@ -1,0 +1,13 @@
+com\crazy\article\CodeGenerator.class
+com\crazy\article\service\ArticleService.class
+com\crazy\article\mapper\ArticleMapper.class
+com\crazy\article\service\ArticleCommentService.class
+com\crazy\article\service\impl\ArticleServiceImpl.class
+com\crazy\article\ArticleApplication.class
+com\crazy\article\entity\ArticleEntity.class
+com\crazy\article\config\SwaggerConfig.class
+com\crazy\article\entity\ArticleCommentEntity.class
+com\crazy\article\controller\ArticleCommentController.class
+com\crazy\article\controller\ArticleController.class
+com\crazy\article\service\impl\ArticleCommentServiceImpl.class
+com\crazy\article\mapper\ArticleCommentMapper.class
