@@ -8,3 +8,4 @@
     * jdk 1.8
 - 前端技术栈
    * vue2.0
+1. > 尝试了springboot推荐的devtools热部署插件，并没有想象中那么好用，改用jRebel。
