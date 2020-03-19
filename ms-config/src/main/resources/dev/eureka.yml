@@ -1,0 +1,13 @@
+server:
+  port: ${blog.service.eureka.port}
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+    eviction-interval-timer-in-ms: 2000
+#    enable-self-preservation: false 关闭自我保护机制
+  instance:
+    hostname: eureka-server
+    prefer-ip-address: true

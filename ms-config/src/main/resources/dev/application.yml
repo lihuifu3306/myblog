@@ -1,0 +1,21 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:5555/eureka
+  instance:
+    preferIpAddress: true
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+    lease-expiration-duration-in-seconds: 30
+    lease-renewal-interval-in-seconds: 10
+logging:
+  level:
+    root: info
+blog:
+  host:
+  service:
+    eureka:
+      name: eureka
+      port: 5555
+    article:
+      name: article
+      port: 6001
