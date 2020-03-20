@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crazy.article.mapper.ArticleCategoryMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.crazy.article.entity.ArticleCategoryEntity">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="description" property="description" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="is_delete" property="isDelete" />
+        <result column="delete_time" property="deleteTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, name, description, create_time, update_time, is_delete, delele_time
+    </sql>
+
+
+    <select id="listCategory" resultType="map">
+        select ac.id,ac.`name`,count(a.category_id) as count
+        FROM article_category ac
+        LEFT JOIN article a
+        on ac.id = a.category_id
+        GROUP BY ac.id
+    </select>
+
+</mapper>

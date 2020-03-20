@@ -2,6 +2,9 @@ package com.crazy.article.service;
 
 import com.crazy.article.entity.ArticleEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
+import io.swagger.models.auth.In;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,6 +16,18 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ArticleService extends IService<ArticleEntity> {
 
+    /**
+     * 新增文章
+     * @param entity  文章
+     * @return  boolean
+     */
     boolean insertArticle(ArticleEntity entity);
+
+    /**
+     * 通过分类id获取文章
+     * @param categoryId 分类id
+     * @return ArticleEntity
+     */
+    List<ArticleEntity> listArticleByCategory(Integer categoryId);
 
 }
