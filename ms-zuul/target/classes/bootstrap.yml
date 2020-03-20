@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: zuul
+  cloud:
+    config:
+#     dev 开发
+      uri: http://localhost:6666
+#     test 测试
+#      uri: http://180.76.234.60:8888
+#     prod 生产
+#      uri:
+#      fail-fast: true
+#      username: flower
+#      password: rjsyffjssthssk

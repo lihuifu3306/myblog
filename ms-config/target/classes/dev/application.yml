@@ -7,9 +7,9 @@ eureka:
     instance-id: ${spring.cloud.client.ipAddress}:${server.port}
     lease-expiration-duration-in-seconds: 30
     lease-renewal-interval-in-seconds: 10
-logging:
-  level:
-    root: info
+#logging:
+#  level:
+#    root: info
 blog:
   host:
   service:
@@ -19,3 +19,6 @@ blog:
     article:
       name: article
       port: 6001
+    zuul:
+      name: zuul
+      port: 5001

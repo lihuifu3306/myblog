@@ -1,0 +1,22 @@
+server:
+  port: ${blog.service.zuul.port}
+zuul:
+  servlet-path: /
+  ignored-services: '*'
+  sensitive-headers: "*"
+  routes:
+    article:
+      path: /**
+      serviceId: article
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enable: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 600000
+ribbon:
+  ConnectionTimeout: 300000
+  ReadTimeout: 300000

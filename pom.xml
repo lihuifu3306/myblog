@@ -13,6 +13,7 @@
         <module>ms-eureka</module>
         <module>ms-config</module>
         <module>blog-core</module>
+        <module>ms-zuul</module>
     </modules>
 
     <parent>
