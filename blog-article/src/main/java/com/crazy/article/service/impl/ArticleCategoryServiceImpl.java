@@ -1,6 +1,7 @@
 package com.crazy.article.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.crazy.article.entity.ArticleCategoryEntity;
 import com.crazy.article.mapper.ArticleCategoryMapper;
 import com.crazy.article.service.ArticleCategoryService;
@@ -29,7 +30,32 @@ public class ArticleCategoryServiceImpl extends ServiceImpl<ArticleCategoryMappe
     }
 
     @Override
+    public boolean updateArticleCategory(ArticleCategoryEntity entity) {
+        entity.setUpdateTime(new Date());
+        return this.updateById(entity);
+    }
+
+    @Override
+    public boolean deleteCategory(Long id) {
+        UpdateWrapper<ArticleCategoryEntity> wrapper = new UpdateWrapper<>();
+        wrapper.set("is_delete", 1);
+        wrapper.set("delete_time", new Date());
+        wrapper.eq("id", id);
+        return this.update(wrapper);
+    }
+
+    @Override
     public List<Map<String, Object>> listCategory() {
         return this.baseMapper.listCategory();
+    }
+
+    @Override
+    public ArticleCategoryEntity queryCategoryByIdAndName(Integer id, String name) {
+        QueryWrapper<ArticleCategoryEntity> wrapper = new QueryWrapper<>();
+        if (id != null) {
+            wrapper.ne("id", id);
+        }
+        wrapper.eq("name", name);
+        return this.getOne(wrapper);
     }
 }

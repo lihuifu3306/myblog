@@ -24,6 +24,7 @@
         FROM article_category ac
         LEFT JOIN article a
         on ac.id = a.category_id
+        WHERE is_delete = 0
         GROUP BY ac.id
     </select>
 

@@ -30,4 +30,12 @@ public interface ArticleService extends IService<ArticleEntity> {
      */
     List<ArticleEntity> listArticleByCategory(Integer categoryId);
 
+    /**
+     * 根据文章id获取文章
+     * @param id
+     * @param queryMessage 是否查询留言和评论 true查询，false不查询
+     * @return
+     */
+    ArticleEntity getArticleById(Integer id, boolean queryMessage);
+
 }

@@ -1,15 +1,25 @@
 package com.crazy.article.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.crazy.article.entity.ArticleCommentEntity;
 import com.crazy.article.entity.ArticleEntity;
+import com.crazy.article.entity.ArticleMessageEntity;
 import com.crazy.article.mapper.ArticleMapper;
+import com.crazy.article.service.ArticleCommentService;
+import com.crazy.article.service.ArticleMessageService;
 import com.crazy.article.service.ArticleService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.sun.org.apache.xpath.internal.objects.XBoolean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -22,6 +32,18 @@ import java.util.List;
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, ArticleEntity> implements ArticleService {
+
+    /**
+     * 留言
+     */
+    @Autowired
+    private ArticleMessageService messageService;
+
+    /**
+     * 评论
+     */
+    @Autowired
+    private ArticleCommentService commentService;
 
     @Override
     public boolean insertArticle(ArticleEntity entity) {
@@ -37,5 +59,25 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, ArticleEntity
         QueryWrapper<ArticleEntity> wrapper = new QueryWrapper<>();
         wrapper.select("id", "title", "create_time").eq("category_id", categoryId).orderByAsc("create_time");
         return this.list(wrapper);
+    }
+
+    @Override
+    public ArticleEntity getArticleById(Integer id, boolean queryMessage) {
+        if (this.baseMapper.addArticlePageView(id)) {
+            ArticleEntity entity = this.getById(id);
+            if (queryMessage) {
+                List<ArticleMessageEntity> entities = messageService.listMessageByArticleId(id);
+                if (entities != null && entities.size() > 0) {
+                    List<Long> list = entities.stream().map(ArticleMessageEntity::getId).collect(Collectors.toList());
+                    Map<Long, List<ArticleCommentEntity>> map = commentService.listCommentByMessageId(list);
+                    if (map != null && map.size() > 0) {
+                        entities.forEach(x -> x.setCommentEntityList(map.get(x.getId())));
+                    }
+                    entity.setMessageEntities(entities);
+                }
+            }
+            return entity;
+         }
+        return null;
     }
 }

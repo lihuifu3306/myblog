@@ -7,10 +7,12 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * <p>
@@ -87,6 +89,20 @@ public class ArticleEntity implements Serializable {
     @TableField("delete_time")
     private Date deleteTime;
 
+
+    /**
+     * 留言信息
+     */
+    @TableField(exist = false)
+    private List<ArticleMessageEntity> messageEntities;
+
+    public List<ArticleMessageEntity> getMessageEntities() {
+        return messageEntities;
+    }
+
+    public void setMessageEntities(List<ArticleMessageEntity> messageEntities) {
+        this.messageEntities = messageEntities;
+    }
 
     public Long getId() {
         return id;

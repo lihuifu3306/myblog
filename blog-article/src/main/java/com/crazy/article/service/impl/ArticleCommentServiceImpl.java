@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -25,5 +28,19 @@ public class ArticleCommentServiceImpl extends ServiceImpl<ArticleCommentMapper,
     public boolean insertArticleComment(ArticleCommentEntity articleCommentEntity) {
         articleCommentEntity.setCreateTime(new Date());
         return this.save(articleCommentEntity);
+    }
+
+    @Override
+    public Map<Long, List<ArticleCommentEntity>> listCommentByMessageId(List<Long> messageIds) {
+        if (messageIds == null || messageIds.size() == 0) {
+            return null;
+        }
+        List<ArticleCommentEntity> entities = this.baseMapper.listCommentByMessageId(messageIds);
+        // 根据messageId分组
+        Map<Long, List<ArticleCommentEntity>> map = null;
+        if (entities != null && entities.size() > 0) {
+            map = entities.stream().collect(Collectors.groupingBy(ArticleCommentEntity::getMessageId));
+        }
+        return map;
     }
 }

@@ -19,5 +19,8 @@
     <sql id="Base_Column_List">
         id, title, article_content, category_id, page_view, create_time, update_time, is_delete, delete_time
     </sql>
+    <insert id="addArticlePageView">
+        update article set page_view = page_view + 1 where id = #{id}
+    </insert>
 
 </mapper>

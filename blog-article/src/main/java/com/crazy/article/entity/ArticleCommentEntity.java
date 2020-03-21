@@ -44,18 +44,18 @@ public class ArticleCommentEntity implements Serializable {
     /**
      * 文章id
      */
-    @ApiModelProperty(name = "articleId", value = "文章的id", required = true)
-    @TableField("article_id")
-    @NotNull(message = "文章id不能为空")
-    private Long articleId;
+    @ApiModelProperty(name = "messageId", value = "留言id", required = true)
+    @TableField("message_id")
+    @NotNull(message = "留言id不能为空")
+    private Long messageId;
 
     /**
      * 发表人的name
      */
-    @ApiModelProperty(name = "messageName", value = "发表人的name", required = true)
-    @TableField("message_name")
-    @NotBlank(message = "发表人的name不能为空")
-    private String messageName;
+    @ApiModelProperty(name = "commentName", value = "评论人的name", required = true)
+    @TableField("comment_name")
+    @NotBlank(message = "姓名不能为空")
+    private String commentName;
 
 
     /**
@@ -67,18 +67,19 @@ public class ArticleCommentEntity implements Serializable {
     private String content;
 
     /**
-     * 评论人的name
+     * email
      */
-    @ApiModelProperty(name = "articleName", value = "评论人的name", example = "赵四")
-    @TableField("comment_name")
-    private String commentName;
+    @ApiModelProperty(name = "email", value = "邮箱", required = true)
+    @TableField("email")
+    @NotBlank(message = "邮箱不能为空")
+    private String email;
 
     /**
      * 点赞数
      */
-    @ApiModelProperty(name = "commentLikeCount", value = "点赞数", example = "1002")
-    @TableField("comment_like_count")
-    private Integer commentLikeCount;
+    @ApiModelProperty(name = "likeCount", value = "点赞数", example = "1002")
+    @TableField("like_count")
+    private Integer likeCount;
 
     /**
      * 创建时间
@@ -87,26 +88,22 @@ public class ArticleCommentEntity implements Serializable {
     @TableField("create_time")
     private Date createTime;
 
-    /**
-     * 评论时间
-     */
-    @ApiModelProperty(name = "commentTime", value = "评论时间", example = "2020-03-19")
-    @TableField("comment_time")
-    private Date commentTime;
-
     @Override
     public String toString() {
         return "ArticleCommentEntity{" +
                 "id=" + id +
                 ", parentId=" + parentId +
-                ", articleId=" + articleId +
-                ", messageName='" + messageName + '\'' +
-                ", content='" + content + '\'' +
+                ", messageId=" + messageId +
                 ", commentName='" + commentName + '\'' +
-                ", commentLikeCount=" + commentLikeCount +
+                ", content='" + content + '\'' +
+                ", email='" + email + '\'' +
+                ", likeCount=" + likeCount +
                 ", createTime=" + createTime +
-                ", commentTime=" + commentTime +
                 '}';
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
     public Long getId() {
@@ -125,28 +122,12 @@ public class ArticleCommentEntity implements Serializable {
         this.parentId = parentId;
     }
 
-    public Long getArticleId() {
-        return articleId;
+    public Long getMessageId() {
+        return messageId;
     }
 
-    public void setArticleId(Long articleId) {
-        this.articleId = articleId;
-    }
-
-    public String getMessageName() {
-        return messageName;
-    }
-
-    public void setMessageName(String messageName) {
-        this.messageName = messageName;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
+    public void setMessageId(Long messageId) {
+        this.messageId = messageId;
     }
 
     public String getCommentName() {
@@ -157,12 +138,28 @@ public class ArticleCommentEntity implements Serializable {
         this.commentName = commentName;
     }
 
-    public Integer getCommentLikeCount() {
-        return commentLikeCount;
+    public String getContent() {
+        return content;
     }
 
-    public void setCommentLikeCount(Integer commentLikeCount) {
-        this.commentLikeCount = commentLikeCount;
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String blogUrl) {
+        this.email = blogUrl;
+    }
+
+    public Integer getLikeCount() {
+        return likeCount;
+    }
+
+    public void setLikeCount(Integer likeCount) {
+        this.likeCount = likeCount;
     }
 
     public Date getCreateTime() {
@@ -171,13 +168,5 @@ public class ArticleCommentEntity implements Serializable {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
-    }
-
-    public Date getCommentTime() {
-        return commentTime;
-    }
-
-    public void setCommentTime(Date commentTime) {
-        this.commentTime = commentTime;
     }
 }

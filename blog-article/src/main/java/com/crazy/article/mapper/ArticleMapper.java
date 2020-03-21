@@ -15,4 +15,10 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface ArticleMapper extends BaseMapper<ArticleEntity> {
 
+    /**
+     * 增加文章访问量
+     * @return boolean
+     */
+    boolean addArticlePageView(Integer id);
+
 }

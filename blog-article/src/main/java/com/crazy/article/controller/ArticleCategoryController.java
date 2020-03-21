@@ -1,16 +1,12 @@
 package com.crazy.article.controller;
 
-
 import com.crazy.article.entity.ArticleCategoryEntity;
 import com.crazy.article.result.Result;
 import com.crazy.article.service.ArticleCategoryService;
-import com.crazy.core.result.JsonResult;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +25,7 @@ import java.util.Map;
  */
 @Api(value = "文章分类", tags = "文章分类")
 @RestController
-@RequestMapping("/articleCategoryEntity")
+@RequestMapping("/articleCategory")
 public class ArticleCategoryController {
 
     @Autowired
@@ -37,11 +33,27 @@ public class ArticleCategoryController {
 
     @ApiOperation(value = "新增文章分类")
     @PostMapping("/insertArticleCategory")
-    public Result<Object> insertArticleCategory(@Valid ArticleCategoryEntity entity,  BindingResult res) {
+    public Result<Object> insertArticleCategory(@Valid @RequestBody ArticleCategoryEntity entity,  BindingResult res) {
         if (res.hasErrors()) {
             return Result.BindingError(res);
         }
+        if (service.queryCategoryByIdAndName(entity.getId(), entity.getName()) != null) {
+            return Result.fail("分类名已存在");
+        }
         return service.insertArticleCategory(entity) ? Result.success() : Result.fail();
+    }
+
+
+    @ApiOperation(value = "修改文章分类")
+    @PostMapping("/updateArticleCategory")
+    public Result<Object> updateArticleCategory(@Valid @RequestBody ArticleCategoryEntity entity, BindingResult res) {
+        if (res.hasErrors()) {
+            return Result.BindingError(res);
+        }
+        if (service.queryCategoryByIdAndName(entity.getId(), entity.getName()) != null) {
+            return Result.fail("分类名已存在");
+        }
+        return service.updateArticleCategory(entity) ? Result.success() : Result.fail();
     }
 
     @ApiOperation(value = "获取文章分类")
@@ -54,5 +66,10 @@ public class ArticleCategoryController {
     }
 
 
+    @ApiOperation(value = "删除文章分类")
+    @DeleteMapping("/deleteCategory/{id}")
+    public Result<Object> deleteCategory(@PathVariable Long id) {
+        return service.deleteCategory(id)? Result.success() : Result.fail();
+    }
 }
 
