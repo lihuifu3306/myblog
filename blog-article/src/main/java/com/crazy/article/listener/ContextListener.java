@@ -1,6 +1,7 @@
 package com.crazy.article.listener;
 
 import com.crazy.article.entity.HistoryVisitEntity;
+import com.crazy.article.interceptor.TotalVisitsInterceptor;
 import com.crazy.article.service.HistoryVisitService;
 import com.crazy.article.task.UpdateVisitCountTask;
 import com.crazy.core.util.DateHelper;
@@ -13,6 +14,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -32,7 +34,7 @@ public class ContextListener implements ServletContextListener {
     private HistoryVisitService visitService;
 
     @Autowired
-    private UpdateVisitCountTask task;
+    private TotalVisitsInterceptor interceptor;
 
     Map<String, Integer> map = new ConcurrentHashMap<>();
 
@@ -53,7 +55,7 @@ public class ContextListener implements ServletContextListener {
 
     @Override
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
+        interceptor.resetVisits();
         logger.error(" 系统正在销毁。。。。。。 ");
-        task.task();
     }
 }

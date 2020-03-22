@@ -1,6 +1,7 @@
 package com.crazy.article.interceptor;
 
 import com.crazy.article.listener.ContextListener;
+import com.crazy.article.service.HistoryVisitService;
 import com.crazy.core.util.DateHelper;
 import com.crazy.core.util.StringHelper;
 import org.slf4j.Logger;
@@ -39,6 +40,9 @@ public class TotalVisitsInterceptor extends HandlerInterceptorAdapter {
     @Autowired
     private ServletContext context;
 
+    @Autowired
+    private HistoryVisitService visitService;
+
 
     /**
      * key 日期   value ip地址
@@ -61,12 +65,16 @@ public class TotalVisitsInterceptor extends HandlerInterceptorAdapter {
     }
 
     /**
-     * 每天隔5隔小时执行一次
+     * 每隔5隔小时执行一次
      */
+    //    @Scheduled(cron = "0/1 * * * * ?")
     @Scheduled(cron = "0 55 0,5,10,15,20,23 * * ?")
     public void resetVisits() {
-        logger.error(Thread.currentThread().getName());
-        context.setAttribute("visitsMap", visitsMap);
+        logger.error("进入定时任务");
+        if (visitsMap != null) {
+            Integer integer = visitsMap.get(DateHelper.today());
+            visitService.saveOrUpdateEntity(DateHelper.today(), integer);
+        }
     }
 
     /**

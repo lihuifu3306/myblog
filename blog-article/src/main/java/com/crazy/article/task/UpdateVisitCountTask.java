@@ -24,7 +24,7 @@ public class UpdateVisitCountTask {
     @Autowired
     private HistoryVisitService visitService;
 
-    @SuppressWarnings("unchecked")
+    /*@SuppressWarnings("unchecked")
     @Async
     @Scheduled(cron = "0 58 0,5,10,15,20,23 * * ?")
     public void task() {
@@ -34,5 +34,5 @@ public class UpdateVisitCountTask {
             Integer integer = map.get(today);
             visitService.saveOrUpdateEntity(today, integer);
         }
-    }
+    }*/
 }
