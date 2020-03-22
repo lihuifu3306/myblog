@@ -10,6 +10,11 @@ import java.util.regex.Pattern;
  */
 public class StringHelper {
 
+
+    public static boolean isEmpty(String str) {
+        return str == null || str.isEmpty();
+    }
+
     public static boolean isNumber(Object str) {
         try {
             Integer.parseInt((String) str);
