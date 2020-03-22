@@ -5,6 +5,7 @@ import com.crazy.article.mapper.ArticleMessageMapper;
 import com.crazy.article.service.ArticleMessageService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.List;
  * @since 2020-03-21
  */
 @Service
+@Transactional(rollbackFor = Exception.class)
 public class ArticleMessageServiceImpl extends ServiceImpl<ArticleMessageMapper, ArticleMessageEntity> implements ArticleMessageService {
 
     @Override

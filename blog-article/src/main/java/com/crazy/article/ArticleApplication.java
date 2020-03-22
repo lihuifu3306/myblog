@@ -6,6 +6,8 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.text.SimpleDateFormat;
@@ -23,6 +25,8 @@ import java.util.Date;
 @EnableEurekaClient
 @Configuration
 @EnableTransactionManagement
+@EnableScheduling
+@EnableAsync
 public class ArticleApplication {
     public static void main(String[] args) {
         SpringApplication.run(ArticleApplication.class, args);

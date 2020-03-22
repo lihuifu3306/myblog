@@ -7,6 +7,7 @@ import com.crazy.article.mapper.ArticleCategoryMapper;
 import com.crazy.article.service.ArticleCategoryService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -21,6 +22,7 @@ import java.util.Map;
  * @since 2020-03-20
  */
 @Service
+@Transactional(rollbackFor = Exception.class)
 public class ArticleCategoryServiceImpl extends ServiceImpl<ArticleCategoryMapper, ArticleCategoryEntity> implements ArticleCategoryService {
 
     @Override

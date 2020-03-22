@@ -61,7 +61,7 @@ public class CodeGenerator {
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         strategy.setRestControllerStyle(true);
         strategy.setEntityTableFieldAnnotationEnable(true);
-        strategy.setInclude("article_message");
+        strategy.setInclude("history_visit");
         mpg.setStrategy(strategy);
 
         mpg.execute();
