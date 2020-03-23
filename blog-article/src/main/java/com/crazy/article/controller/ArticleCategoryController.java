@@ -33,7 +33,7 @@ public class ArticleCategoryController {
 
     @ApiOperation(value = "新增文章分类")
     @PostMapping("/insertArticleCategory")
-    public Result<Object> insertArticleCategory(@Valid ArticleCategoryEntity entity,  BindingResult res) {
+    public Result<Object> insertArticleCategory(@Valid @RequestBody ArticleCategoryEntity entity,  BindingResult res) {
         if (res.hasErrors()) {
             return Result.BindingError(res);
         }
@@ -46,7 +46,7 @@ public class ArticleCategoryController {
 
     @ApiOperation(value = "修改文章分类")
     @PostMapping("/updateArticleCategory")
-    public Result<Object> updateArticleCategory(@Valid ArticleCategoryEntity entity, BindingResult res) {
+    public Result<Object> updateArticleCategory(@Valid @RequestBody ArticleCategoryEntity entity, BindingResult res) {
         if (res.hasErrors()) {
             return Result.BindingError(res);
         }
