@@ -6,10 +6,6 @@ import com.crazy.article.entity.ArticleCategoryEntity;
 import com.crazy.article.mapper.ArticleCategoryMapper;
 import com.crazy.article.service.ArticleCategoryService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,30 +23,33 @@ import java.util.Map;
  */
 @Service
 @Transactional(rollbackFor = Exception.class)
-@CacheConfig(cacheNames = "category")
 public class ArticleCategoryServiceImpl extends ServiceImpl<ArticleCategoryMapper, ArticleCategoryEntity> implements ArticleCategoryService {
 
     @Override
-    public boolean insertArticleCategory(ArticleCategoryEntity entity) {
+    public ArticleCategoryEntity insertArticleCategory(ArticleCategoryEntity entity) {
         entity.setCreateTime(new Date());
-        return this.save(entity);
+        if (this.save(entity)) {
+            return entity;
+        }
+        return null;
     }
 
-    /**
-     * 先更新Mysql，再更新redis
-     * @param entity 文章分类
-     * @return boolean
-     */
     @Override
-    @CacheEvict(key = "listCategory")
-    @CachePut(key = "#entity.id")
-    public boolean updateArticleCategory(ArticleCategoryEntity entity) {
+    public ArticleCategoryEntity updateArticleCategory(ArticleCategoryEntity entity) {
         entity.setUpdateTime(new Date());
-        return this.updateById(entity);
+        if (this.updateById(entity)) {
+            return entity;
+        }
+        return null;
     }
 
     @Override
-    @CacheEvict(allEntries = true)
+  /*  @Caching(
+            evict = {
+                    @CacheEvict(value = "category", allEntries = true),
+                    @CacheEvict(value = "listCategory", allEntries = true)
+            }
+    )*/
     public boolean deleteCategory(Long id) {
         UpdateWrapper<ArticleCategoryEntity> wrapper = new UpdateWrapper<>();
         wrapper.set("is_delete", 1);
@@ -59,23 +58,24 @@ public class ArticleCategoryServiceImpl extends ServiceImpl<ArticleCategoryMappe
         return this.update(wrapper);
     }
 
-    /**
-     * cacheNames/value:数组
-     * key 缓存使用的key。
-     * @return list
-     */
+
     @Override
-    @Cacheable(key = "#root.methodName")
-    public List<Map<String, Object>> listCategory() {
+    public List<Map<String, Object>> listCategory(Integer pageNum, Integer pageSize) {
         return this.baseMapper.listCategory();
     }
+
 
     @Override
     public ArticleCategoryEntity queryCategoryByIdAndName(Integer id, String name) {
         QueryWrapper<ArticleCategoryEntity> wrapper = new QueryWrapper<>();
-        if (id != null) {
-            wrapper.ne("id", id);
-        }
+        wrapper.ne("id", id);
+        wrapper.eq("name", name);
+        return this.getOne(wrapper);
+    }
+
+    @Override
+    public ArticleCategoryEntity queryCategoryById(String name) {
+        QueryWrapper<ArticleCategoryEntity> wrapper = new QueryWrapper<>();
         wrapper.eq("name", name);
         return this.getOne(wrapper);
     }

@@ -21,7 +21,7 @@ public interface ArticleCategoryService extends IService<ArticleCategoryEntity> 
      * @param entity 文章分类
      * @return boolean
      */
-    boolean insertArticleCategory(ArticleCategoryEntity entity);
+    ArticleCategoryEntity insertArticleCategory(ArticleCategoryEntity entity);
 
 
     /**
@@ -29,7 +29,7 @@ public interface ArticleCategoryService extends IService<ArticleCategoryEntity> 
      * @param entity 文章分离
      * @return boolean
      */
-    boolean updateArticleCategory(ArticleCategoryEntity entity);
+    ArticleCategoryEntity updateArticleCategory(ArticleCategoryEntity entity);
 
     /**
      * 删除文章分类
@@ -42,7 +42,7 @@ public interface ArticleCategoryService extends IService<ArticleCategoryEntity> 
      * 获取文章分类
      * @return list
      */
-    List<Map<String, Object>> listCategory();
+    List<Map<String, Object>> listCategory(Integer pageNum, Integer pageSize);
 
     /**
      * 根据id和name查询分类
@@ -51,5 +51,13 @@ public interface ArticleCategoryService extends IService<ArticleCategoryEntity> 
      * @return
      */
     ArticleCategoryEntity queryCategoryByIdAndName(Integer id, String name);
+
+    /**
+     * 通过name查询文章分类
+     * @param name
+     * @return entity
+     */
+    ArticleCategoryEntity queryCategoryById(String name);
+
 
 }

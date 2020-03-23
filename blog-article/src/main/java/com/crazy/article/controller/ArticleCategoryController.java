@@ -33,34 +33,34 @@ public class ArticleCategoryController {
 
     @ApiOperation(value = "新增文章分类")
     @PostMapping("/insertArticleCategory")
-    public Result<Object> insertArticleCategory(@Valid @RequestBody ArticleCategoryEntity entity,  BindingResult res) {
+    public Result<Object> insertArticleCategory(@Valid ArticleCategoryEntity entity,  BindingResult res) {
         if (res.hasErrors()) {
             return Result.BindingError(res);
         }
-        if (service.queryCategoryByIdAndName(entity.getId(), entity.getName()) != null) {
+        if (service.queryCategoryById(entity.getName()) != null) {
             return Result.fail("分类名已存在");
         }
-        return service.insertArticleCategory(entity) ? Result.success() : Result.fail();
+        return service.insertArticleCategory(entity) != null ? Result.success() : Result.fail();
     }
 
 
     @ApiOperation(value = "修改文章分类")
     @PostMapping("/updateArticleCategory")
-    public Result<Object> updateArticleCategory(@Valid @RequestBody ArticleCategoryEntity entity, BindingResult res) {
+    public Result<Object> updateArticleCategory(@Valid ArticleCategoryEntity entity, BindingResult res) {
         if (res.hasErrors()) {
             return Result.BindingError(res);
         }
         if (service.queryCategoryByIdAndName(entity.getId(), entity.getName()) != null) {
             return Result.fail("分类名已存在");
         }
-        return service.updateArticleCategory(entity) ? Result.success() : Result.fail();
+        return service.updateArticleCategory(entity) != null ? Result.success() : Result.fail();
     }
 
     @ApiOperation(value = "获取文章分类")
     @GetMapping("/listCategory")
     public Result<Object> listCategory(@RequestParam Integer pageNum, @RequestParam Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
-        List<Map<String, Object>> map = service.listCategory();
+        List<Map<String, Object>> map = service.listCategory(pageNum, pageSize);
         PageInfo<Map<String, Object>> info = new PageInfo<>(map);
         return Result.success(info);
     }

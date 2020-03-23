@@ -1,4 +1,4 @@
-package com.crazy.article.config;
+package com.crazy.article.config.redis;
 
 import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;

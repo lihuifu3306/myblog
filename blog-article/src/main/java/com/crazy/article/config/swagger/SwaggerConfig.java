@@ -1,4 +1,4 @@
-package com.crazy.article.config;
+package com.crazy.article.config.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
