@@ -32,6 +32,10 @@ spring:
 #    redis:
 #      flush-mode: immediate
 #      namespace: spring:session-beaver
+  redis:
+    host: localhost
+    password: redis
+    port: 6379
 pagehelper:
   helper-dialect: mysql
   reasonable: true
@@ -68,3 +72,5 @@ management:
   endpoint:
     shutdown:
       enabled: true
+debug:
+  true

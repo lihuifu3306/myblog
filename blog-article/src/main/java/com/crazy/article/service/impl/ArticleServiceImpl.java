@@ -1,7 +1,6 @@
 package com.crazy.article.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.crazy.article.entity.ArticleCommentEntity;
 import com.crazy.article.entity.ArticleEntity;
 import com.crazy.article.entity.ArticleMessageEntity;
@@ -10,7 +9,6 @@ import com.crazy.article.service.ArticleCommentService;
 import com.crazy.article.service.ArticleMessageService;
 import com.crazy.article.service.ArticleService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.sun.org.apache.xpath.internal.objects.XBoolean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 /**
