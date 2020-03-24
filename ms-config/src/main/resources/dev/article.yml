@@ -71,6 +71,4 @@ management:
         include: '*'
   endpoint:
     shutdown:
-      enabled: true
-debug:
-  true
+      enabled: false
