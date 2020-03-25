@@ -24,7 +24,7 @@ import javax.validation.Valid;
  * @author lhf
  * @since 2020-03-25
  */
-@Api(value = "留言评论表")
+@Api(value = "留言评论表",tags = "留言、评论")
 @RestController
 @RequestMapping("/articleMessage")
 public class ArticleMessageCommentController {
