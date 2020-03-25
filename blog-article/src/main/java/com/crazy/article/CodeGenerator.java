@@ -61,7 +61,7 @@ public class CodeGenerator {
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         strategy.setRestControllerStyle(true);
         strategy.setEntityTableFieldAnnotationEnable(true);
-        strategy.setInclude("friend_ship");
+        strategy.setInclude("article_message_comment");
         mpg.setStrategy(strategy);
 
         mpg.execute();

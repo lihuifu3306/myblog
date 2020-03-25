@@ -19,6 +19,6 @@ public interface ArticleMapper extends BaseMapper<ArticleEntity> {
      * 增加文章访问量
      * @return boolean
      */
-    boolean addArticlePageView(Integer id);
+    boolean addArticlePageView(Long id);
 
 }

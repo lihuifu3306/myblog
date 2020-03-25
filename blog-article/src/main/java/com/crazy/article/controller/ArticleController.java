@@ -67,7 +67,7 @@ public class ArticleController {
             @ApiImplicitParam(name = "queryMessage", value = "是否查询文章的留言信息", paramType = "path", dataType = "boolean", required = true)
     })
     @GetMapping("/getArticleById/{id}/{queryMessage}")
-    public Result<ArticleEntity> getArticleById(@PathVariable Integer id, @PathVariable boolean queryMessage) {
+    public Result<ArticleEntity> getArticleById(@PathVariable Long id, @PathVariable boolean queryMessage) {
         ArticleEntity entity = service.getArticleById(id, queryMessage);
         return Result.success(entity);
     }

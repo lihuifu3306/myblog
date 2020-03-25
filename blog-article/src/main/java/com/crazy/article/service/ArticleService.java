@@ -36,6 +36,6 @@ public interface ArticleService extends IService<ArticleEntity> {
      * @param queryMessage 是否查询留言和评论 true查询，false不查询
      * @return
      */
-    ArticleEntity getArticleById(Integer id, boolean queryMessage);
+    ArticleEntity getArticleById(Long id, boolean queryMessage);
 
 }

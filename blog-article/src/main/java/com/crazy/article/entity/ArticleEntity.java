@@ -89,18 +89,30 @@ public class ArticleEntity implements Serializable {
     @TableField("delete_time")
     private Date deleteTime;
 
-
-    /**
-     * 留言信息
-     */
     @TableField(exist = false)
-    private List<ArticleMessageEntity> messageEntities;
+    private List<ArticleMessageCommentEntity> messageEntities;
 
-    public List<ArticleMessageEntity> getMessageEntities() {
+    @Override
+    public String toString() {
+        return "ArticleEntity{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", articleContent='" + articleContent + '\'' +
+                ", categoryId=" + categoryId +
+                ", pageView=" + pageView +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", isDelete=" + isDelete +
+                ", deleteTime=" + deleteTime +
+                ", messageEntities=" + messageEntities +
+                '}';
+    }
+
+    public List<ArticleMessageCommentEntity> getMessageEntities() {
         return messageEntities;
     }
 
-    public void setMessageEntities(List<ArticleMessageEntity> messageEntities) {
+    public void setMessageEntities(List<ArticleMessageCommentEntity> messageEntities) {
         this.messageEntities = messageEntities;
     }
 
@@ -176,18 +188,4 @@ public class ArticleEntity implements Serializable {
         this.deleteTime = deleteTime;
     }
 
-    @Override
-    public String toString() {
-        return "ArticleEntity{" +
-        "id=" + id +
-        ", title=" + title +
-        ", articleContent=" + articleContent +
-        ", categoryId=" + categoryId +
-        ", pageView=" + pageView +
-        ", createTime=" + createTime +
-        ", updateTime=" + updateTime +
-        ", isDelete=" + isDelete +
-        ", deleteTime=" + deleteTime +
-        "}";
-    }
 }

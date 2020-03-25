@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.annotations.ApiIgnore;
+
 import javax.validation.Valid;
 
 /**
@@ -21,7 +23,8 @@ import javax.validation.Valid;
  * @author lhf
  * @since 2020-03-21
  */
-@Api(value = "留言", tags = "文章留言")
+@ApiIgnore
+@Api(value = "留言", tags = "已弃用")
 @RestController
 @RequestMapping("/articleMessage")
 public class ArticleMessageController {
