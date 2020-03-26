@@ -53,12 +53,12 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, ArticleEntity
 
     @Override
     public ArticleEntity getArticleById(Long id, boolean queryMessage) {
+        ArticleEntity entity = null;
         if (this.baseMapper.addArticlePageView(id)) {
-            ArticleEntity entity = this.getById(id);
+            entity = this.getById(id);
             if (queryMessage) {
                 List<ArticleMessageCommentEntity> entities = messageCommentService.listMessageByArticleId(id);
                 entity.setMessageEntities(entities);
-                return entity;
             }
             /*if (queryMessage) {
                 List<ArticleMessageEntity> entities = messageService.listMessageByArticleId(id);
@@ -73,6 +73,6 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, ArticleEntity
             }
             return entity*/;
          }
-        return null;
+        return entity;
     }
 }

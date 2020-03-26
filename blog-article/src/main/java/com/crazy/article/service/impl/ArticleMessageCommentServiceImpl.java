@@ -5,6 +5,8 @@ import com.crazy.article.entity.ArticleMessageCommentEntity;
 import com.crazy.article.mapper.ArticleMessageCommentMapper;
 import com.crazy.article.service.ArticleMessageCommentService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.crazy.article.service.IMailService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,10 +25,15 @@ import java.util.List;
 @Transactional(rollbackFor = Exception.class)
 public class ArticleMessageCommentServiceImpl extends ServiceImpl<ArticleMessageCommentMapper, ArticleMessageCommentEntity> implements ArticleMessageCommentService {
 
+
+    @Autowired
+    private IMailService mailService;
+
     @Override
     public ArticleMessageCommentEntity insertMessageComment(ArticleMessageCommentEntity entity) {
         entity.setCreateTime(new Date());
         if (this.save(entity)) {
+            mailService.toSendWho(entity);
             return entity;
         }
         return null;
