@@ -59,6 +59,11 @@ public class ArticleEntity implements Serializable {
     @TableField("category_id")
     private Integer categoryId;
 
+    @ApiModelProperty(name = "status", value = "文章状态", required = true)
+    @NotNull(message = "文章状态不能为空")
+    @TableField("status")
+    private Integer status;
+
     /**
      * 文章访问量
      */
@@ -99,6 +104,7 @@ public class ArticleEntity implements Serializable {
                 ", title='" + title + '\'' +
                 ", articleContent='" + articleContent + '\'' +
                 ", categoryId=" + categoryId +
+                ", status=" + status +
                 ", pageView=" + pageView +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
@@ -106,6 +112,14 @@ public class ArticleEntity implements Serializable {
                 ", deleteTime=" + deleteTime +
                 ", messageEntities=" + messageEntities +
                 '}';
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public List<ArticleMessageCommentEntity> getMessageEntities() {

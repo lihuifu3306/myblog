@@ -2,10 +2,10 @@ package com.crazy.article.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.crazy.article.entity.FriendShipEntity;
 import com.crazy.article.mapper.FriendShipMapper;
 import com.crazy.article.service.FriendShipService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -50,10 +50,6 @@ public class FriendShipServiceImpl extends ServiceImpl<FriendShipMapper, FriendS
         return this.update(wrapper);
     }
 
-    @Override
-    public List<FriendShipEntity> listFriendShip() {
-        return this.list();
-    }
 
     @Override
     public FriendShipEntity queryFriendByUrl(String url) {
@@ -68,5 +64,10 @@ public class FriendShipServiceImpl extends ServiceImpl<FriendShipMapper, FriendS
         wrapper.ne("id", id);
         wrapper.eq("friend_url", url);
         return this.getOne(wrapper);
+    }
+
+    @Override
+    public List<FriendShipEntity> listFriendShip(Boolean isAll) {
+        return this.baseMapper.listFriendShip(isAll);
     }
 }

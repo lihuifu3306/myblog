@@ -32,8 +32,6 @@ public interface FriendShipService extends IService<FriendShipEntity> {
      */
     boolean deleteById(Integer id);
 
-    List<FriendShipEntity> listFriendShip();
-
     /**
      * 通过url查询链接
      * @param url url
@@ -47,5 +45,7 @@ public interface FriendShipService extends IService<FriendShipEntity> {
      * @param url url
      */
     FriendShipEntity queryFriendByIdAndUrl(Integer id, String url);
+
+    List<FriendShipEntity> listFriendShip(Boolean isAll);
 
 }

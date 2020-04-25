@@ -5,7 +5,10 @@ import com.crazy.article.result.Result;
 import com.crazy.article.service.ArticleService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import io.swagger.annotations.*;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -66,10 +70,23 @@ public class ArticleController {
             @ApiImplicitParam(name = "id", value = "文章id", paramType = "path", dataType = "int", required = true),
             @ApiImplicitParam(name = "queryMessage", value = "是否查询文章的留言信息", paramType = "path", dataType = "boolean", required = true)
     })
+
     @GetMapping("/getArticleById/{id}/{queryMessage}")
     public Result<ArticleEntity> getArticleById(@PathVariable Long id, @PathVariable boolean queryMessage) {
         ArticleEntity entity = service.getArticleById(id, queryMessage);
         return Result.success(entity);
+    }
+
+    @ApiOperation(value = "获取所有文章")
+    @GetMapping(value = "/listArticle")
+    public Result<List<ArticleEntity>> listArticle() {
+        return Result.success(service.listArticle());
+    }
+
+    @ApiOperation(value = "文章总数")
+    @GetMapping(value = "/articleCount")
+    public Result<Map<String, Integer>> articleCount() {
+        return Result.success(service.queryArticleCount());
     }
 
 }

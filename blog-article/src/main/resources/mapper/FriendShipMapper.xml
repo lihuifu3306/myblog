@@ -20,4 +20,15 @@
         id, name, friend_url, type, description, create_time, update_time, is_delete, delete_time
     </sql>
 
+    <select id="listFriendShip" resultMap="BaseResultMap">
+        SELECT
+        *
+        FROM
+        friend_ship
+
+        <if test="isAll">
+            WHERE type = 1
+        </if>
+    </select>
+
 </mapper>

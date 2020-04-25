@@ -1,8 +1,12 @@
 package com.crazy.article.mapper;
 
+import com.crazy.article.entity.FriendShipEntity;
 import com.crazy.article.entity.HistoryVisitEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * <p>
@@ -14,5 +18,6 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface HistoryVisitMapper extends BaseMapper<HistoryVisitEntity> {
+
 
 }

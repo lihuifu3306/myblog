@@ -84,6 +84,17 @@ public class FriendShipEntity implements Serializable {
     @TableField("delete_time")
     private Date deleteTime;
 
+    public FriendShipEntity() {
+    }
+
+    public FriendShipEntity(String name, String friendUrl, Integer type, String description, Date createTime, Date updateTime) {
+        this.name = name;
+        this.friendUrl = friendUrl;
+        this.type = type;
+        this.description = description;
+        this.createTime = createTime;
+        this.updateTime = updateTime;
+    }
 
     public Integer getId() {
         return id;

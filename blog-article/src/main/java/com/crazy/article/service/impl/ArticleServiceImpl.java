@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -60,19 +61,23 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, ArticleEntity
                 List<ArticleMessageCommentEntity> entities = messageCommentService.listMessageByArticleId(id);
                 entity.setMessageEntities(entities);
             }
-            /*if (queryMessage) {
-                List<ArticleMessageEntity> entities = messageService.listMessageByArticleId(id);
-                if (entities != null && entities.size() > 0) {
-                    List<Long> list = entities.stream().map(ArticleMessageEntity::getId).collect(Collectors.toList());
-                    Map<Long, List<ArticleCommentEntity>> map = commentService.listCommentByMessageId(list);
-                    if (map != null && map.size() > 0) {
-                        entities.forEach(x -> x.setCommentEntityList(map.get(x.getId())));
-                    }
-                    entity.setMessageEntities(entities);
-                }
-            }
-            return entity*/;
          }
         return entity;
+    }
+
+    @Override
+    public List<ArticleEntity> listArticle() {
+        QueryWrapper<ArticleEntity> wrapper = new QueryWrapper<>();
+        wrapper.select("id, title, create_time").ne("status", -1).orderByDesc("create_time");
+        return this.list(wrapper);
+    }
+
+    @Override
+    public Map<String, Integer> queryArticleCount() {
+        Map<String, Integer> map = new HashMap<>();
+        QueryWrapper<ArticleEntity> wrapper = new QueryWrapper<>();
+        wrapper.ne("status", "-1");
+        map.put("count", this.count(wrapper));
+        return map;
     }
 }

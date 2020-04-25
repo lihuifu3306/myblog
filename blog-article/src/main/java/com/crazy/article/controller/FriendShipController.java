@@ -5,6 +5,7 @@ import com.crazy.article.entity.FriendShipEntity;
 import com.crazy.article.result.Result;
 import com.crazy.article.service.FriendShipService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
@@ -65,8 +66,9 @@ public class FriendShipController {
 
     @ApiOperation(value = "查询友情链接")
     @GetMapping("/listFriendShip")
-    public Result<List<FriendShipEntity>> listFriendShip() {
-        List<FriendShipEntity> list = service.list();
+    @ApiImplicitParam(name = "isAll", value = "true查询筛选过的-前台，false全部，后台", paramType = "query", dataType = "boolean", required = true)
+    public Result<List<FriendShipEntity>> listFriendShip(Boolean isAll) {
+        List<FriendShipEntity> list = service.listFriendShip(isAll);
         return Result.success(list);
     }
 

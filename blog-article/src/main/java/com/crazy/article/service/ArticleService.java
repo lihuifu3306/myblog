@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import io.swagger.models.auth.In;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -34,8 +35,18 @@ public interface ArticleService extends IService<ArticleEntity> {
      * 根据文章id获取文章
      * @param id
      * @param queryMessage 是否查询留言和评论 true查询，false不查询
-     * @return
+     * @return entity
      */
     ArticleEntity getArticleById(Long id, boolean queryMessage);
 
+    /**
+     * 获取所有的文章
+     * return
+     */
+    List<ArticleEntity> listArticle();
+
+    /**
+     * 获取文章总数
+     */
+    Map<String, Integer> queryArticleCount();
 }

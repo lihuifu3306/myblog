@@ -9,4 +9,6 @@ public class Constant {
 
     public static final String IMG_PATH = "C:/lihuifu/images/";
 
+    public static final Integer FRIEND_SHIP = 1;
+
 }
