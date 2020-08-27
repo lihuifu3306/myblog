@@ -26,7 +26,7 @@ public class BirthdayTask {
     @Autowired
     private FriendBirthdayService birthdayService;
 
-    @Scheduled(cron = "0 0 12 * * ?")
+    @Scheduled(cron = "0 15 10 ? * *")
     public void task() {
         List<FriendBirthdayEntity> entities = birthdayService.queryBirthday();
         Calendar calendar = Calendar.getInstance();

@@ -4,12 +4,20 @@ spring:
   jackson:
     time-zone: GMT+8
     date-format: yyyy-MM-dd HH:mm:ss
+#  qq邮箱配置
+  mail:
+    host: smtp.qq.com
+    username: shiyiblog@qq.com
+    password: izdfhkgkrugjhccf
+    port: 465
+    properties.mail.smtp.ssl.enable: true
+    default-encoding: UTF-8
   datasource:
     name: rediscache
-    url: jdbc:mysql://localhost:3306/blog?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://47.98.128.229:3306/blog?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
 #    &serverTimezone=GMT%2B8
     username: root
-    password: dymwan520
+    password: root
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
     druid:
@@ -37,8 +45,8 @@ spring:
 #      flush-mode: immediate
 #      namespace: spring:session-beaver
   redis:
-    host: localhost
-    password: redis
+    host: 47.98.128.229
+    password: dymwan520
     port: 6379
 pagehelper:
   helper-dialect: mysql

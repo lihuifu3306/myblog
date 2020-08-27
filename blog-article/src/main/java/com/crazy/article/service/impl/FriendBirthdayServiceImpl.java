@@ -59,15 +59,9 @@ public class FriendBirthdayServiceImpl extends ServiceImpl<FriendBirthdayMapper,
 
     @Override
     public List<FriendBirthdayEntity> queryBirthday() {
-        String list = redisTemplate.opsForValue().get(BIRTHDAY_LIST);
-        if (list == null) {
-            List<FriendBirthdayEntity> entities = listBirthday();
-            if (entities != null && entities.size() > 0) {
-                redisTemplate.opsForValue().set(BIRTHDAY_LIST, JSON.toJSON(entities).toString());
-                return entities;
-            }
-        } else {
-            return JSON.parseArray(list, FriendBirthdayEntity.class);
+        List<FriendBirthdayEntity> entities = listBirthday();
+        if (entities != null && entities.size() > 0) {
+            return entities;
         }
         return null;
     }
