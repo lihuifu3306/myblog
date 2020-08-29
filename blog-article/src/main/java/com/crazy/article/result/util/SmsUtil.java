@@ -18,8 +18,8 @@ import java.util.Date;
  */
 public class SmsUtil {
 
-    private final String KEY = "LTAIl6WlNc1gN3bG";
-    private final String SECRET = "OSqX1hyF75SsYcBm7Pr9Ljbu8RLUXM";
+    private final String KEY = "LTAIl6WlNc1gN3bGsdf";
+    private final String SECRET = "OSqX1hyF75SsYcBm7Pr9Ljbu8RLUXMsdfdsf";
 
     public boolean sendSms(String ip, String app, String errormsg) {
         DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", KEY, SECRET);
@@ -32,8 +32,8 @@ public class SmsUtil {
         request.setSysAction("SendSms");
         request.putQueryParameter("RegionId", "cn-hangzhou");
         request.putQueryParameter("PhoneNumbers", "13895691709");
-        request.putQueryParameter("SignName", "不思量");
-        request.putQueryParameter("TemplateCode", "SMS_172883333");
+        request.putQueryParameter("SignName", "不思量asdfasdf");
+        request.putQueryParameter("TemplateCode", "SMS_172883333adsfadsf");
         // 实际需要的值，json格式
         // 亲爱的小仙女，早上好 今天的天气：${weather}, 温度：${tem}, 平均温度：${avtmp}, 天气状况：${fen},具体${title}
 

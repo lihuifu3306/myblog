@@ -13,6 +13,7 @@ import org.springframework.data.querydsl.QuerydslUtils;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -70,6 +71,12 @@ public class FriendBirthdayServiceImpl extends ServiceImpl<FriendBirthdayMapper,
         QueryWrapper<FriendBirthdayEntity> wrapper = new QueryWrapper<>();
         wrapper.eq("is_friendly", 0);
         return this.list(wrapper);
+    }
+
+    public static void main(String[] args) {
+        BigDecimal a = new BigDecimal("0.01");
+        int i = a.compareTo(new BigDecimal(0));
+        System.out.println(i);
     }
 
 
