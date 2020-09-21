@@ -2,8 +2,14 @@ spring:
   cloud:
     config:
       server:
+#        git:
+#          uri: https://github.com/lihuifu3306/spring-cloud-config.git
+#          force-pull: true
+#          username: lihuifu3306
+#          password: dymwan520@
         native:
           search-locations: classpath:/dev
+
   profiles:
     active: native
   application:

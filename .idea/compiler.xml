@@ -7,9 +7,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="ms-config" />
-        <module name="ms-zuul" />
         <module name="blog-article" />
+        <module name="ms-config" />
+        <module name="gateway" />
         <module name="blog-core" />
         <module name="ms-eureka" />
       </profile>
@@ -19,9 +19,9 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="blog-article" options="-parameters" />
       <module name="blog-core" options="-parameters" />
+      <module name="gateway" options="-parameters" />
       <module name="ms-config" options="-parameters" />
       <module name="ms-eureka" options="-parameters" />
-      <module name="ms-zuul" options="-parameters" />
     </option>
   </component>
 </project>

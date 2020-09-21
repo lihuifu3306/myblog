@@ -6,18 +6,26 @@
     <resultMap id="BaseResultMap" type="com.crazy.article.entity.ArticleCommentEntity">
         <id column="id" property="id" />
         <result column="parent_id" property="parentId" />
-        <result column="article_id" property="articleId"/>
-        <result column="article_name" property="messageName" />
-        <result column="content" property="content"/>
+        <result column="message_id" property="messageId"/>
         <result column="comment_name" property="commentName" />
-        <result column="comment_like_count" property="commentLikeCount" />
+        <result column="content" property="content"/>
+        <result column="email" property="email"/>
+        <result column="like_count" property="likeCount" />
         <result column="create_time" property="createTime" />
-        <result column="comment_time" property="commentTime" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, parent_id, article_id, article_name, message_name, content, comment_like_count, create_time, comment_time
+        id, parent_id, article_id, message_id, comment_name, content, email, like_count, create_time
     </sql>
+    <select id="listCommentByMessageId" resultMap="BaseResultMap">
+        select *
+        from article_comment
+        where 1 = 1
+        and message_id in
+        <foreach collection="messageIds" item="messageId" open="(" close=")" separator=",">
+            #{messageId}
+        </foreach>
+    </select>
 
 </mapper>

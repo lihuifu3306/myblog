@@ -3,7 +3,7 @@ package com.crazy.article;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.converter.Converter;
@@ -23,12 +23,12 @@ import java.util.Date;
  */
 
 @SpringBootApplication
-@EnableEurekaClient
 @Configuration
 @EnableTransactionManagement
 @EnableScheduling
 @EnableAsync
 @EnableCaching
+@EnableDiscoveryClient
 public class ArticleApplication {
     public static void main(String[] args) {
         SpringApplication.run(ArticleApplication.class, args);

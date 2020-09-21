@@ -1,7 +1,0 @@
-spring:
-  application:
-    name: article
-  cloud:
-    config:
-      uri: http://localhost:6666
-

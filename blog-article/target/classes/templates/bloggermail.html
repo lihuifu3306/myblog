@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div style="margin: 0 auto">
+        <h1>---来自失、忆博客</h1>
+        <span>您的文章有了新的回复：</span>
+        <p th:text="${commentName}"></p>在
+        <span th:text="${articleTitle}"></span>中给
+        <span th:text="${targetName}"></span>评论了
+        <span th:text="${content}"></span>
+
+        <p>
+           --- <a href="http://www.naocanwa.com">失丶忆博客</a>
+        </p>
+    </div>
+
+</body>
+</html>

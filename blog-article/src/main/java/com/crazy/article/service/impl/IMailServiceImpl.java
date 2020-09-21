@@ -33,19 +33,18 @@ import java.util.Map;
  */
 @Service
 @Transactional(rollbackFor = Exception.class)
-@Async
 public class IMailServiceImpl implements IMailService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    private JavaMailSender mailSender;
+    private JavaMailSender javaMailSender;
 
     @Autowired
     private ArticleService articleService;
 
     @Autowired
-    private ArticleMessageCommentService messageService;
+    private ArticleMessageCommentService articleMessageCommentService;
 
     @Autowired
     private TemplateEngine templateEngine;
@@ -63,7 +62,7 @@ public class IMailServiceImpl implements IMailService {
             map.put("articleTitle", article.getTitle());
             map.put("content", entity.getContent());
             if (entity.getParentId() != 0) {
-                ArticleMessageCommentEntity commentEntity = messageService.getById(entity.getParentId());
+                ArticleMessageCommentEntity commentEntity = articleMessageCommentService.getById(entity.getParentId());
                 map.put("to", entity.getEmail());
                 map.put("targetName", commentEntity.getName());
                 sendHtmlMail(map);
@@ -89,13 +88,13 @@ public class IMailServiceImpl implements IMailService {
         message.setSubject(subject);
         message.setText(content);
         logger.info("发件人：" + from + "--收件人：" + destination + "--发件内容:" + content);
-        mailSender.send(message);
+        javaMailSender.send(message);
     }
 
     @Override
     public void sendHtmlMail(Map<String, Object> map) {
         //获取MimeMessage对象
-        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper messageHelper;
         try {
             messageHelper = new MimeMessageHelper(message, true);
@@ -107,7 +106,7 @@ public class IMailServiceImpl implements IMailService {
             context.setVariables(map);
             String content = templateEngine.process("shiyiblog@qq.com".equals(to) ? Constant.MY_TEMPLATE : Constant.MS_TEMPLATE, context);
             messageHelper.setText(content, true);
-            mailSender.send(message);
+            javaMailSender.send(message);
         } catch (MessagingException e) {
             logger.error("发送邮件时发生异常！", e);
         }
@@ -115,7 +114,7 @@ public class IMailServiceImpl implements IMailService {
 
     @Override
     public void sendAttachmentMail(String destination, String subject, String content, String filePath) {
-        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessage message = javaMailSender.createMimeMessage();
         try {
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
             helper.setFrom(from);
@@ -126,7 +125,7 @@ public class IMailServiceImpl implements IMailService {
             FileSystemResource file = new FileSystemResource(new File(filePath));
             String fileName = filePath.substring(filePath.lastIndexOf(File.separator));
             helper.addAttachment(fileName, file);
-            mailSender.send(message);
+            javaMailSender.send(message);
             //日志信息
             logger.info("发件人：" + from + "--收件人：" + destination + "--发件内容:" + content + "--附件" + fileName);
         } catch (MessagingException e) {

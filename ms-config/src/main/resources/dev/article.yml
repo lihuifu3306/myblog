@@ -6,18 +6,18 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
 #  qq邮箱配置
   mail:
-    host: smtp.qq.comdfa
-    username: shiyiblog@qq.comasdfasd
-    password: izdfhkgkrugjhccfadsfadsf
-    port: sdfad
+    host: smtp.qq.com
+    username: shiyiblog@qq.com
+    password: izdfhkgkrugjhccf
+    port: 465
     properties.mail.smtp.ssl.enable: true
     default-encoding: UTF-8
   datasource:
     name: rediscache
     url: jdbc:mysql://47.98.128.229:3306/blog?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
 #    &serverTimezone=GMT%2B8
-    username: rootasdf
-    password: rootadsf
+    username: root
+    password: root
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
     druid:
@@ -84,3 +84,15 @@ management:
   endpoint:
     shutdown:
       enabled: false
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:5555/eureka
+  instance:
+    preferIpAddress: true
+    instance-id: 127.0.0.1:6001
+    #    hostname: ${spring.cloud.client.ipAddress}
+    lease-expiration-duration-in-seconds: 30
+    lease-renewal-interval-in-seconds: 10
+    ipAddress: 127.0.0.1
+    non-secure-port: 6001

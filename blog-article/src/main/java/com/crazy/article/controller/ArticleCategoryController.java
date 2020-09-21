@@ -60,6 +60,7 @@ public class ArticleCategoryController {
     @GetMapping("/listCategory")
     public Result<Object> listCategory(@RequestParam Integer pageNum, @RequestParam Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
+        System.out.println("--------------------");
         List<Map<String, Object>> map = service.listCategory(pageNum, pageSize);
         PageInfo<Map<String, Object>> info = new PageInfo<>(map);
         return Result.success(info);

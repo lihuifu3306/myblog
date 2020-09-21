@@ -1,4 +1,6 @@
 com\crazy\core\util\EncryptUtils.class
 com\crazy\core\util\RandomString.class
-com\crazy\core\result\JsonResult.class
+com\crazy\core\constant\Constant.class
 com\crazy\core\util\StringHelper.class
+com\crazy\core\util\DateHelper.class
+com\crazy\core\result\JsonResult.class

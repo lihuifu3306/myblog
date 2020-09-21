@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crazy.article.mapper.FriendBirthdayMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.crazy.article.entity.FriendBirthdayEntity">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="comment" property="comment" />
+        <result column="email" property="email" />
+        <result column="sex" property="sex" />
+        <result column="birthday" property="birthday" />
+        <result column="create_time" property="createTime" />
+        <result column="is_friendly" property="isFriendly" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, name, comment, email, sex, birthday, create_time, is_friendly
+    </sql>
+
+</mapper>

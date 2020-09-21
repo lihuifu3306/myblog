@@ -9,15 +9,20 @@
         <result column="article_content" property="articleContent" />
         <result column="category_id" property="categoryId" />
         <result column="page_view" property="pageView" />
+        <result column="status" property="status"/>
         <result column="create_time" property="createTime" />
         <result column="update_time" property="updateTime" />
         <result column="is_delete" property="isDelete" />
         <result column="delete_time" property="deleteTime" />
+
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, title, article_content, category_id, page_view, create_time, update_time, is_delete, delete_time
+        id, title, article_content, category_id, page_view, status,create_time, update_time, is_delete, delete_time
     </sql>
+    <insert id="addArticlePageView">
+        update article set page_view = page_view + 1 where id = #{id}
+    </insert>
 
 </mapper>
