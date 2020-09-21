@@ -1,25 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="66cfb8c8-6e95-48fd-9e61-48efffbd95a0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/blog-article/src/main/resources/bootstrap.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/resources/bootstrap.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-article/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/blog-article/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-article/src/main/java/com/crazy/article/ArticleApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-article/src/main/java/com/crazy/article/ArticleApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-article/src/main/java/com/crazy/article/controller/ArticleCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-article/src/main/java/com/crazy/article/controller/ArticleCategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-article/src/main/java/com/crazy/article/result/util/SmsUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-article/src/main/java/com/crazy/article/result/util/SmsUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-article/src/main/java/com/crazy/article/service/impl/IMailServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-article/src/main/java/com/crazy/article/service/impl/IMailServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-article/src/main/resources/bootstrap.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-config/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/ms-config/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-config/src/main/resources/dev/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/ms-config/src/main/resources/dev/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-config/src/main/resources/dev/article.yml" beforeDir="false" afterPath="$PROJECT_DIR$/ms-config/src/main/resources/dev/article.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-config/src/main/resources/dev/zuul.yml" beforeDir="false" afterPath="$PROJECT_DIR$/ms-config/src/main/resources/dev/zuul.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-zuul/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-zuul/src/main/java/com/crazy/zuul/ZuulApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/crazy/zuul/ZuulApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-zuul/src/main/resources/bootstrap.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-zuul/src/main/resources/rebel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/rebel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-    </list>
+    <list default="true" id="66cfb8c8-6e95-48fd-9e61-48efffbd95a0" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -353,7 +335,7 @@
       <workItem from="1600391120067" duration="8113000" />
       <workItem from="1600408474598" duration="621000" />
       <workItem from="1600414784253" duration="6124000" />
-      <workItem from="1600434921193" duration="2160000" />
+      <workItem from="1600434921193" duration="2759000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'master' of github.com:lihuifu3306/myblog">
       <created>1584608839223</created>
@@ -632,6 +614,10 @@
     </state>
     <state x="2432" y="423" key="com.intellij.ide.util.TipDialog/0.0.1920.1032/1920.150.1536.824@1920.150.1536.824" timestamp="1595212781359" />
     <state x="640" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.150.1536.824@0.0.1920.1040" timestamp="1600414782379" />
+    <state x="752" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1600660323802">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="752" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.150.1536.824@0.0.1920.1040" timestamp="1600660323802" />
     <state x="746" y="414" key="git4idea.ui.GitResetDialog" timestamp="1598664543222">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
